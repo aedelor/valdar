@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html = style="height: 100%;">
+  <head>
+    <title>Valdar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scripts/leaflet.css">
+    <script src="scripts/leaflet.js"></script>
+  </head>
+
+  <body style="height: 100%;margin: 0;">
+    <div id="map" style="width: 100%; height: 100%; background: #000000;"></div>
+    <script type="text/javascript">
+
+  //Creating the Map
+    var map = L.map('map').setView([0, 0], 0);
+    L.tileLayer('map/{z}/{x}/{y}.png', {
+      continuousWorld: false,
+      noWrap: true,
+      minZoom: 2,
+      maxZoom: 5,
+    }).addTo(map);
+
+  //Coordinate Finder
+/*
+    var marker = L.marker([0, 0], {
+      draggable: true,
+    }).addTo(map);
+    marker.bindPopup('LatLng Marker').openPopup();
+    marker.on('dragend', function(e) {
+      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+    });
+*/
+
+  //Icons
+	var cityCapital = L.icon({
+		iconUrl:       'icons/cityCapital.png',
+		iconRetinaUrl: 'icons/cityCapital.png',
+		shadowUrl:     'scripts/images/marker-shadow.png',
+		iconSize:    [25, 41],
+		iconAnchor:  [12, 41],
+		popupAnchor: [1, -34],
+		tooltipAnchor: [16, -28],
+		shadowSize:  [41, 41]
+	});
+
+  //Markers
+var s_milpont = L.marker([74.188052, -7.734375], {icon:cityCapital}).bindPopup('<a href=\"http://wiki.aedelor.com/home/places/milpont\" target=\"_parent\">Mil Pont</a><br/>Mil Pont is the capital of the Valdarian Empire and was founded c. 10 DC. It has grown to a present-day population of 150,000 making it one of the largest cities in the world.').addTo(map);
+
+    </script>
+  </body>
+</html>
